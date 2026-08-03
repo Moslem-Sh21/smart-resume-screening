@@ -1,0 +1,71 @@
+name: Feature request
+description: Suggest a new capability or improvement for Visual Product RAG
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an improvement. Please describe the problem and your proposed solution.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or need
+      description: Explain the problem this feature would address.
+      placeholder: What problem are you trying to solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe how you think the feature should work.
+      placeholder: Explain the desired behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe any alternative approaches you considered.
+      placeholder: Optional alternative solutions
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Project area
+      description: Select the part of the project most closely related to this request.
+      options:
+        - Data pipeline
+        - Embeddings
+        - Retrieval
+        - Multimodal chat
+        - API
+        - User interface
+        - Evaluation
+        - Infrastructure
+        - Monitoring
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Add examples, diagrams, references, or other helpful information.
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched existing issues for a similar request.
+          required: true
+        - label: This request describes one focused improvement.
+          required: true
