@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "visual-product-rag"
+name = "smart-resume-screening"
 version = "0.0.1"
-description = "End-to-end multimodal product search and grounded comparison platform"
+description = "Human-in-the-loop technical resume matching and candidate review platform"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
 authors = [
@@ -21,7 +21,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/visual_product_rag"]
+packages = ["src/resume_screening"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

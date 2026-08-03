@@ -1,182 +1,149 @@
-\# Visual Product RAG
+# Smart Resume Screening
 
+A human-in-the-loop platform for matching technical resumes to job descriptions, ranking candidates, and producing evidence-grounded fit explanations.
 
-
-An end-to-end multimodal product search and grounded comparison platform.
-
-
-
-\## Project Status
-
-
+## Project Status
 
 This project is currently under development.
 
+## Overview
 
+Smart Resume Screening will allow reviewers to:
 
-\## Overview
+- Upload PDF and DOCX resumes
+- Enter or upload a technical job description
+- Extract structured skills, experience, education, and certifications
+- Separate identity information from ranking features
+- Match resumes to required and preferred job qualifications
+- Rank candidates using lexical, semantic, and structured signals
+- Review evidence supporting every score and explanation
+- Compare candidate strengths, gaps, and uncertainties
+- Override system results and provide reviewer feedback
 
+The platform is intended to support human reviewers. It will not automatically reject candidates or make final hiring decisions.
 
+## Initial Role Scope
 
-Visual Product RAG will allow users to:
+The first version will focus on:
 
+- Machine Learning Engineer
+- Data Scientist
+- Data Engineer
+- Software Engineer
+- Cloud and DevOps Engineer
+- Cybersecurity Analyst
 
-
-\- Upload a product image
-
-\- Search for visually similar products
-
-\- Search using natural-language queries
-
-\- Combine image and text constraints
-
-\- Compare retrieved products using a multimodal language model
-
-\- Receive answers grounded in product metadata and retrieved images
-
-
-
-\## Planned Architecture
-
-
+## Planned Architecture
 
 The project will include:
 
+- Docling for local PDF and DOCX parsing
+- AWS Textract as a cloud parsing option
+- O*NET-based occupation and skill normalization
+- BM25 lexical retrieval
+- BGE-M3 semantic embeddings
+- BGE reranking
+- Evidence-grounded multimodal language-model explanations
+- FastAPI backend
+- PostgreSQL and OpenSearch
+- Docker and Docker Compose
+- GitHub Actions CI/CD
+- AWS ECS Fargate deployment
+- MLflow experiment tracking and tracing
+- CloudWatch monitoring
+- Terraform infrastructure as code
 
+## Repository Structure
 
-\- CLIP or SigLIP-based multimodal embeddings
+- `.github/workflows/`
+- `infra/`
+- `monitoring/`
+- `notebooks/`
+- `src/resume_screening/`
+- `tests/`
+- `.env.example`
+- `.gitignore`
+- `pyproject.toml`
+- `README.md`
 
-\- FAISS for local vector search
+## Development Roadmap
 
-\- Amazon OpenSearch for cloud vector search
+- [x] Initialize Git repository
+- [x] Create initial repository structure
+- [x] Add environment configuration template
+- [x] Configure Python project
+- [x] Rescope the repository for resume screening
+- [ ] Create API and domain schemas
+- [ ] Add Docker development environment
+- [ ] Build PDF and DOCX ingestion
+- [ ] Implement structured resume and job extraction
+- [ ] Build ranking benchmarks and classical baselines
+- [ ] Add dense retrieval and reranking
+- [ ] Add evidence-grounded explanations
+- [ ] Add fairness and robustness evaluations
+- [ ] Deploy to AWS
+- [ ] Add monitoring and automated evaluation
+- [ ] Codify infrastructure using Terraform
 
-\- FastAPI backend
-
-\- Multimodal language model integration
-
-\- Docker and Docker Compose
-
-\- GitHub Actions CI/CD
-
-\- AWS deployment using ECS Fargate
-
-\- MLflow experiment tracking
-
-\- CloudWatch monitoring
-
-\- Terraform infrastructure as code
-
-
-
-\## Repository Structure
-
-
-
-\- `.github/workflows/`
-
-\- `infra/`
-
-\- `monitoring/`
-
-\- `notebooks/`
-
-\- `src/`
-
-\- `tests/`
-
-\- `.env.example`
-
-\- `.gitignore`
-
-\- `pyproject.toml`
-
-\- `README.md`
-
-
-
-\## Development Roadmap
-
-
-
-\- \[x] Initialize Git repository
-
-\- \[x] Create initial repository structure
-
-\- \[x] Add environment configuration template
-
-\- \[x] Configure Python project
-
-\- \[ ] Create API skeleton
-
-\- \[ ] Add Docker development environment
-
-\- \[ ] Build dataset preprocessing pipeline
-
-\- \[ ] Implement multimodal retrieval
-
-\- \[ ] Add grounded product comparison
-
-\- \[ ] Deploy to AWS
-
-\- \[ ] Add monitoring and automated evaluation
-
-
-
-\## Local Development
-
-
-
-Local setup instructions will be added when the API and development environment are available.
-
-
-
-\## Dataset
-
-
-
-The project will initially use a curated subset of the Amazon Berkeley Objects dataset.
-
-
-
-Dataset download and preprocessing instructions will be added later.
-
-
-
-\## Evaluation
-
-
+## Evaluation
 
 The system will be evaluated using:
 
+### Extraction
 
+- Precision
+- Recall
+- F1 score
+- Evidence-span recall
+- Employment-date accuracy
 
-\- Recall@k
+### Ranking
 
-\- Mean reciprocal rank
+- nDCG@5 and nDCG@10
+- Recall@5 and Recall@10
+- Mean reciprocal rank
+- Mean average precision
+- Pairwise ranking accuracy
 
-\- NDCG
+### Explanation quality
 
-\- Retrieval latency
+- Citation precision
+- Requirement coverage
+- Unsupported-claim rate
+- Correct missing-information rate
 
-\- Metadata accuracy
+### Fairness and robustness
 
-\- Citation accuracy
+- Counterfactual rank difference
+- Top-k flip rate
+- Resume-format sensitivity
+- Keyword-stuffing resistance
+- Prompt-injection resistance
 
-\- Unsupported-claim rate
+## Responsible-Use Principles
 
+- Human reviewers make all final decisions
+- Identity information is excluded from ranking
+- Missing information is not treated as evidence of missing ability
+- Candidate scores remain decomposable and reviewable
+- Generated claims must cite resume evidence
+- The system will not infer personality or culture fit
+- Real resumes will not be published without explicit consent
 
+## Local Development
 
-\## Author
+Local setup instructions will be added when the API and Docker environment are available.
 
+## Benchmark
 
+The project will introduce a controlled technical-role matching benchmark built from synthetic candidate profiles and manually reviewed relevance labels.
+
+Publicly scraped resumes will not be included in the repository.
+
+## Author
 
 Matthew Shokrolahi
 
-
-
-\## License
-
-
+## License
 
 A project license will be selected before the first public release.
-
