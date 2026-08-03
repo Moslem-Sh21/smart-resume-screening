@@ -1,0 +1,68 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+
+# Type checking and linting caches
+.mypy_cache/
+.pyright/
+.ruff_cache/
+
+# Build and packaging outputs
+build/
+dist/
+*.egg-info/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Local data and generated artifacts
+data/
+artifacts/*
+!artifacts/.gitkeep
+
+# Model and index files
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.faiss
+*.index
+
+# Terraform local and state files
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# Local Docker overrides
+docker-compose.override.yml
