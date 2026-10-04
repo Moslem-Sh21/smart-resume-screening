@@ -3,6 +3,7 @@ import pytest
 from resume_screening.config import get_settings
 from resume_screening.exceptions import InvalidFileError
 from resume_screening.services.file_validation import (
+    validate_content_type,
     validate_file_extension,
     validate_file_size,
 )
@@ -53,3 +54,14 @@ def test_rejects_empty_file() -> None:
         match="Uploaded file is empty",
     ):
         validate_file_size(0)
+
+def test_accepts_pdf_content_type() -> None:
+    validate_content_type("application/pdf")
+
+
+def test_rejects_unsupported_content_type() -> None:
+    with pytest.raises(
+        InvalidFileError,
+        match="Unsupported content type",
+    ):
+        validate_content_type("text/plain")

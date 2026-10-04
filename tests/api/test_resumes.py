@@ -75,3 +75,18 @@ def test_reject_empty_resume() -> None:
 
     assert response.status_code == 400
     assert "Uploaded file is empty" in response.json()["detail"]
+
+def test_rejects_mismatched_content_type() -> None:
+    response = client.post(
+        "/resumes/validate",
+        files={
+            "file": (
+                "resume.pdf",
+                b"dummy content",
+                "text/plain",
+            )
+        },
+    )
+
+    assert response.status_code == 400
+    assert "Unsupported content type" in response.json()["detail"]

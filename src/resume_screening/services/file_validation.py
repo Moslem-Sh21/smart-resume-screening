@@ -30,3 +30,15 @@ def validate_file_size(size_bytes: int) -> None:
         raise InvalidFileError(
             f"File exceeds the maximum size of {settings.max_upload_size_mb} MB."
         )
+
+ALLOWED_CONTENT_TYPES = {
+    "application/pdf",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+}
+
+
+def validate_content_type(content_type: str | None) -> None:
+    if content_type not in ALLOWED_CONTENT_TYPES:
+        raise InvalidFileError(
+            f"Unsupported content type '{content_type}'."
+        )
