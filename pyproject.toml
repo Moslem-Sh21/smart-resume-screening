@@ -11,13 +11,19 @@ requires-python = ">=3.11,<3.14"
 authors = [
     { name = "Matthew Shokrolahi" }
 ]
-dependencies = []
+dependencies = [
+    "fastapi>=0.141.1",
+    "pydantic-settings>=2.15.0",
+    "python-multipart>=0.0.32",
+    "uvicorn[standard]>=0.53.0",
+]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
     "pyright>=1.1",
     "ruff>=0.6",
+    "httpx>=0.28.1",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -25,7 +31,7 @@ packages = ["src/resume_screening"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = [".", "src"]
 
 [tool.ruff]
 line-length = 100
@@ -35,6 +41,6 @@ target-version = "py311"
 select = ["E", "F", "I", "B", "UP"]
 
 [tool.pyright]
-include = ["src", "tests"]
+include = ["apps", "src", "tests"]
 pythonVersion = "3.11"
 typeCheckingMode = "standard"
