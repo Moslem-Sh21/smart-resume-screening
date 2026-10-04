@@ -17,3 +17,13 @@ def validate_file_extension(filename: str) -> None:
         raise InvalidFileError(
             f"Unsupported file type '.{extension}'. Allowed types: {allowed}."
         )
+
+def validate_file_size(size_bytes: int) -> None:
+    settings = get_settings()
+
+    max_size_bytes = settings.max_upload_size_mb * 1024 * 1024
+
+    if size_bytes > max_size_bytes:
+        raise InvalidFileError(
+            f"File exceeds the maximum size of {settings.max_upload_size_mb} MB."
+        )
