@@ -46,3 +46,10 @@ def test_rejects_file_over_size_limit() -> None:
         match="File exceeds the maximum size",
     ):
         validate_file_size(max_size_bytes + 1)
+
+def test_rejects_empty_file() -> None:
+    with pytest.raises(
+        InvalidFileError,
+        match="Uploaded file is empty",
+    ):
+        validate_file_size(0)

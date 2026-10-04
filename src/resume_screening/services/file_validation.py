@@ -21,6 +21,9 @@ def validate_file_extension(filename: str) -> None:
 def validate_file_size(size_bytes: int) -> None:
     settings = get_settings()
 
+    if size_bytes <= 0:
+        raise InvalidFileError("Uploaded file is empty.")
+
     max_size_bytes = settings.max_upload_size_mb * 1024 * 1024
 
     if size_bytes > max_size_bytes:

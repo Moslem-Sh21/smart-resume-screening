@@ -60,3 +60,18 @@ def test_reject_oversized_resume() -> None:
 
     assert response.status_code == 400
     assert "File exceeds the maximum size" in response.json()["detail"]
+
+def test_reject_empty_resume() -> None:
+    response = client.post(
+        "/resumes/validate",
+        files={
+            "file": (
+                "resume.pdf",
+                b"",
+                "application/pdf",
+            )
+        },
+    )
+
+    assert response.status_code == 400
+    assert "Uploaded file is empty" in response.json()["detail"]
