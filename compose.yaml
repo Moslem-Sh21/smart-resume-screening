@@ -1,0 +1,10 @@
+name: smart-resume-screening
+
+services:
+  api:
+    build: .
+    image: smart-resume-screening:local
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
