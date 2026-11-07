@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from apps.api.exception_handlers import invalid_file_exception_handler
 from apps.api.routers.health import router as health_router
+from apps.api.routers.jobs import router as jobs_router
 from apps.api.routers.resumes import router as resumes_router
 from apps.api.routers.system import router as system_router
 from resume_screening import __version__
@@ -32,6 +33,7 @@ app.add_exception_handler(
 )
 
 app.include_router(health_router)
+app.include_router(jobs_router)
 app.include_router(system_router)
 app.include_router(resumes_router)
 
