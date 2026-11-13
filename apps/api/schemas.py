@@ -8,6 +8,12 @@ class HealthResponse(BaseModel):
 class VersionResponse(BaseModel):
     version: str
 
+
 class ResumeValidationResponse(BaseModel):
     filename: str
     status: str
+
+
+class ResumeParseResponse(BaseModel):
+    filename: str
+    markdown: str
