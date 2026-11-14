@@ -1,6 +1,7 @@
 from resume_screening.schemas.candidate import (
     CandidateEducation,
     CandidateExperience,
+    CandidateIdentity,
     CandidateProfile,
 )
 from resume_screening.schemas.evidence import CandidateEvidence
@@ -10,6 +11,7 @@ __all__ = [
     "CandidateEducation",
     "CandidateEvidence",
     "CandidateExperience",
+    "CandidateIdentity",
     "CandidateProfile",
     "JobProfile",
     "JobRequirement",
