@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 
+from resume_screening.schemas import CandidateProfile
+
 
 class HealthResponse(BaseModel):
     status: str
@@ -17,3 +19,8 @@ class ResumeValidationResponse(BaseModel):
 class ResumeParseResponse(BaseModel):
     filename: str
     markdown: str
+
+
+class ResumeExtractResponse(BaseModel):
+    filename: str
+    candidate: CandidateProfile
