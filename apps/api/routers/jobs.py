@@ -5,12 +5,14 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from apps.api.dependencies import get_db_session
+from apps.api.schemas import JobExtractRequest
 from resume_screening.db.mappers.job_mapper import (
     job_orm_to_profile,
     job_profile_to_orm,
 )
 from resume_screening.db.repositories.job_repository import JobRepository
 from resume_screening.schemas.job import JobProfile
+from resume_screening.services.job_extractor import extract_job_profile
 
 router = APIRouter(
     prefix="/jobs",
@@ -55,6 +57,26 @@ def create_job(
         ) from None
 
     return job_orm_to_profile(job)
+
+
+@router.post(
+    "/extract",
+    response_model=JobProfile,
+)
+def extract_job(
+    request: JobExtractRequest,
+) -> JobProfile:
+    try:
+        return extract_job_profile(
+            job_id=request.job_id,
+            job_description=request.job_description,
+            title=request.title,
+        )
+    except ValueError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(exc),
+        ) from exc
 
 
 @router.get(
